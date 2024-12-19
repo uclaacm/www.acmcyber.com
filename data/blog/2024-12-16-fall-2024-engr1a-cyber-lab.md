@@ -28,20 +28,20 @@ Next, we focused on exploitation to gain remote code execution (RCE) on remote f
 
 Seeing these exploits in action gave us a deeper understanding of how attackers leverage common vulnerabilities.
 
-![Screenshot 2024-12-15 at 11.57.25 PM](https://hackmd.io/_uploads/Bk42CI6VJe.png)
-![Screenshot 2024-12-15 at 11.57.50 PM](https://hackmd.io/_uploads/SJ4k1P6Nye.png)
+![Screenshot 2024-12-15 at 11.57.25 PM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/Bk42CI6VJe.png)
+![Screenshot 2024-12-15 at 11.57.50 PM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/SJ4k1P6Nye.png)
 
 ## Privilege Escalation
 After gaining access, the next step was to escalate privileges from a standard user to a root user and gain administrator priviliges. We used two different techniques:
 
 1. **Writable ```/etc/passwd```**: We modified the ```/etc/passwd``` file to add a new user with UID 0 (root). This gave the new user administrative privileges. To test, we switched to the new account and confirmed we had root access.
-![Screenshot 2024-12-16 at 12.06.47 AM](https://hackmd.io/_uploads/rklIlP6V1l.png)
-![Screenshot 2024-12-16 at 12.07.22 AM](https://hackmd.io/_uploads/rJPOxv6NJg.png)
+![Screenshot 2024-12-16 at 12.06.47 AM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/rklIlP6V1l.png)
+![Screenshot 2024-12-16 at 12.07.22 AM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/rJPOxv6NJg.png)
 
 2. **SUID Exploit on pexec**: We identified a binary (```pexec```) with the SUID bit set. By executing commands through ```pexec```, we started a new shell with root privileges.
-![Screenshot 2024-12-16 at 12.13.07 AM](https://hackmd.io/_uploads/HJw2Zw6E1l.png)
-![Screenshot 2024-12-16 at 12.13.54 AM](https://hackmd.io/_uploads/H1RyfD6Vkg.png)
-![Screenshot 2024-12-16 at 12.14.34 AM](https://hackmd.io/_uploads/rkNzzv64ye.png)
+![Screenshot 2024-12-16 at 12.13.07 AM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/HJw2Zw6E1l.png)
+![Screenshot 2024-12-16 at 12.13.54 AM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/H1RyfD6Vkg.png)
+![Screenshot 2024-12-16 at 12.14.34 AM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/rkNzzv64ye.png)
 We can see that we are now the root user.
 
 These techniques allowed us to bypass user restrictions and gain full control over the system, showcasing how misconfigurations and weak permissions can be exploited.
@@ -65,8 +65,8 @@ These features provided insights into the target’s activities and access to va
 
 ## Kill Switch
 To maintain operational security, we added a "kill switch" feature. This functionality allowed the attacker to remotely terminate the malware by sending a designated command. The script (```server.py```) then self-deleted, leaving no trace of its existence.
-![Screenshot 2024-12-16 at 12.24.25 AM](https://hackmd.io/_uploads/BydwVwTVkg.png)
-![Screenshot 2024-12-16 at 12.26.44 AM](https://hackmd.io/_uploads/rJi2EDa4kx.png)
+![Screenshot 2024-12-16 at 12.24.25 AM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/BydwVwTVkg.png)
+![Screenshot 2024-12-16 at 12.26.44 AM](/images/blog/2024-12-16-fall-2024-engr1a-cyber-lab/rJi2EDa4kx.png)
 
 ## Lessons Learned
 This project was a deep dive into offensive security, and the following are some valuable insights gained along the way:
